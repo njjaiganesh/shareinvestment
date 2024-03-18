@@ -18,4 +18,5 @@ npm start
 ## Deployment
 
 cd android or cd ./android
+
 gradlew assembleRelease or ./gradlew assembleRelease
