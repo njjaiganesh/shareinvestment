@@ -3,6 +3,10 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 # Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+>git clone https://github.com/njjaiganesh/shareinvestment
+>npm install -g @aws-amplify/cli
+>npm install aws-amplify @aws-amplify/react-native @aws-amplify/rtn-web-browser @react-native-community/netinfo @react-native-async-storage/async-storage react-native-get-random-values
+
 
 ## Step 1: Start the Metro Server
 
