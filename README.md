@@ -1,6 +1,6 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+## Prerequisites
 
 Install Android Studio 
 
@@ -13,7 +13,6 @@ npm install aws-amplify @aws-amplify/react-native @aws-amplify/rtn-web-browser @
 
 ## Run Application
 
-# using npm
 npm start
 
 ## Deployment
