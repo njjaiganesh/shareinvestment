@@ -10,6 +10,7 @@ npm install -g @aws-amplify/cli
 
 npm install aws-amplify @aws-amplify/react-native @aws-amplify/rtn-web-browser @react-native-community/netinfo @react-native-async-storage/async-storage react-native-get-random-values
 
+npm install react-native-collapsible
 
 ## Run Application
 
