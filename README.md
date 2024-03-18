@@ -21,3 +21,6 @@ npm start
 cd android or cd ./android
 
 gradlew assembleRelease or ./gradlew assembleRelease
+
+## Useful tools
+https://snack.expo.dev/?platform=android for desiging UI
