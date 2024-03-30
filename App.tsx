@@ -4,10 +4,13 @@ import {
   Text,
   View,
   TextInput,
+  TouchableOpacity,
   Pressable,
   SafeAreaView,
   Image,
-  Dimensions
+  Dimensions,
+  Animated,
+  StatusBar
   
 } from 'react-native'
 import { Table, Row, Rows } from 'react-native-table-component';
@@ -19,7 +22,125 @@ import {
 import { generateClient } from 'aws-amplify/api';
 import { createTodo } from './src/graphql/mutations';
 import { listTodos } from './src/graphql/queries';
+import { TabView, SceneMap } from 'react-native-tab-view';
 
+const sectionHead=["Inv. date","Inv. Amt","Paid date","Pad Amt"]
+const section = [
+        {
+          tableHead: ['23-Mar-2023',80000,'',''],
+          tableData: [['','','24-Apr-2023', '5000'], ['','','24-May-2023', '5000'], ['','','24-Jun-2023', '5000'], ['','','24-Jul-2023', '5000'], ['','','24-Aug-2023', '5000'], ['','','24-Sep-2023', '5000'], ['','','24-Oct-2023', '5000'],['','','24-Nov-2023', '5000'],['','','24-Dec-2023', '5000'],['','','24-Jan-2024', '5000'],['','','24-Feb-2024', '5000'],['','','24-Mar-2024', '24600']],
+        },
+        {
+          tableHead: ['26-Jan-2024',65000,'',''],
+          tableData: [['','','24-Feb-2023', '5000'], ['','','24-Apr-2024', '5000'], ['','','24-May-2024', '5000'], ['','','24-Jun-2024', '5000']],
+        }
+      ]
+
+      const FirstRoute = () => (
+        <View style={styles.content}>
+              <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+              <Row data={sectionHead} style={styles.head}  />
+                <Row data={section[0].tableHead} style={styles.head}  />
+                <Rows data={section[0].tableData}  />
+              </Table>
+            </View>
+      );
+      const SecondRoute = () => (
+        <View style={styles.content}>
+              <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+              <Row data={sectionHead} style={styles.head}  />
+                <Row data={section[1].tableHead} style={styles.head}  />
+                <Rows data={section[1].tableData}  />
+              </Table>
+            </View>
+      );
+      const ThirdRoute = () => (
+        <View style={styles.content}>
+              <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+              <Row data={sectionHead} style={styles.head}  />
+                <Row data={section[0].tableHead} style={styles.head}  />
+                <Rows data={section[0].tableData}  />
+              </Table>
+            </View>
+      );
+      const FourthRoute = () => (
+        <View style={styles.content}>
+              <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+              <Row data={sectionHead} style={styles.head}  />
+                <Row data={section[1].tableHead} style={styles.head}  />
+                <Rows data={section[1].tableData}  />
+              </Table>
+            </View>
+      );
+      const FifthRoute = () => (
+        <View style={styles.content}>
+              <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+              <Row data={sectionHead} style={styles.head}  />
+                <Row data={section[1].tableHead} style={styles.head}  />
+                <Rows data={section[1].tableData}  />
+              </Table>
+            </View>
+      );
+      
+       class TabViewExample extends React.Component {
+        state = {
+          index: 0,
+          routes: [
+            { key: 'first', title: 'Investment 1' },
+            { key: 'second', title: 'Investment 2' },
+            { key: 'third', title: 'Investment 3' },
+            { key: 'fourth', title: 'Investment 4' },
+            { key: 'fifth', title: 'Investment 5' },
+          ],
+        };
+      
+        _handleIndexChange = (index) => this.setState({ index });
+      
+        _renderTabBar = (props) => {
+          const inputRange = props.navigationState.routes.map((x, i) => i);
+      
+          return (
+            <View style={styles.tabBar}>
+              {props.navigationState.routes.map((route, i) => {
+                const opacity = props.position.interpolate({
+                  inputRange,
+                  outputRange: inputRange.map((inputIndex) =>
+                    inputIndex === i ? 1 : 0.5
+                  ),
+                });
+      
+                return (
+                  <TouchableOpacity
+                    style={styles.tabItem}
+                    onPress={() => this.setState({ index: i })}>
+                    <Animated.Text style={{ opacity }}>{route.title}</Animated.Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          );
+        };
+      
+        _renderScene = SceneMap({
+          first: FirstRoute,
+          second: SecondRoute,
+          third: ThirdRoute,
+          fourth: FourthRoute,
+          fifth: FifthRoute
+        });
+      
+        render() {
+          return (
+            <TabView
+              navigationState={this.state}
+              renderScene={this._renderScene}
+              renderTabBar={this._renderTabBar}
+              onIndexChange={this._handleIndexChange}
+            />
+          );
+        }
+      }
+            
 class ExampleOne extends Component {
   constructor(props) {
     super(props);
@@ -168,7 +289,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>
     <View style={styles.container}>
       <SignOutButton />
-      <ExampleOne/>
+      <TabViewExample/>
     </View>
   </SafeAreaView>
   );
@@ -214,6 +335,7 @@ const styles = StyleSheet.create({
     borderColor: '#c8e1ff',
     alignSelf: 'center',
   },
+  head: {  backgroundColor: '#f1f8ff' },
   tableheader: {
     
     marginTop: 30,
@@ -225,5 +347,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#c8e1ff',
     alignSelf: 'center',    
+  },
+  tabBar: {
+    flexDirection: 'row',
+    paddingTop: StatusBar.currentHeight,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 16,
   },
 });
