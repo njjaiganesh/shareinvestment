@@ -13,6 +13,7 @@ npm install aws-amplify @aws-amplify/react-native @aws-amplify/rtn-web-browser @
 npm install react-native-collapsible
 
 react-native-pager-view
+
 react-native-tab-view
 
 
