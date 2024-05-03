@@ -7,6 +7,7 @@ import App from './App';
 import {name as appName} from './app.json';
 import { Amplify } from 'aws-amplify';
 import amplifyconfig from './src/amplifyconfiguration.json';
+import AppNew from './AppNew';
 Amplify.configure(amplifyconfig);
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => AppNew);

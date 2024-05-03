@@ -18,28 +18,46 @@
     }
   },
   "auth": {
-    "loginapp0b0535fe": {
+    "loginappf493a065": {
       "customAuth": false,
       "dependsOn": [],
-      "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
-        },
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ]
-      },
       "providerPlugin": "awscloudformation",
-      "service": "Cognito"
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_loginappf493a065_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "loginappf493a065"
+        }
+      ]
+    },
+    "AMPLIFY_auth_loginappf493a065_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "loginappf493a065"
+        }
+      ]
+    },
+    "AMPLIFY_auth_loginappf493a065_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "loginappf493a065"
+        }
+      ]
+    },
+    "AMPLIFY_auth_loginappf493a065_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "loginappf493a065"
+        }
+      ]
     }
   }
 }

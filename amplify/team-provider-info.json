@@ -16,7 +16,12 @@
         "loginapp": {}
       },
       "auth": {
-        "loginapp0b0535fe": {}
+        "loginappf493a065": {
+          "userPoolId": "us-east-1_93or9tEu7",
+          "userPoolName": "customattrpool",
+          "webClientId": "10n46o6as0rv47cuqdski4qmp",
+          "nativeClientId": "10n46o6as0rv47cuqdski4qmp"
+        }
       }
     }
   }
