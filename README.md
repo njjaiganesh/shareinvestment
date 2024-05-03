@@ -17,7 +17,9 @@ react-native-pager-view
 react-native-tab-view
 
 npm install react-native-screens react-native-safe-area-context
+
 react-navigation/native
+
 react-navigation/native-stack
 
 
