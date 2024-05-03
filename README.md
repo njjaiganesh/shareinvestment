@@ -34,5 +34,7 @@ cd android or cd ./android
 
 gradlew assembleRelease or ./gradlew assembleRelease
 
+On successful build the apk file will be found under android\app\build\outputs\apk\release
+
 ## Useful tools
 https://snack.expo.dev/?platform=android for desiging UI
